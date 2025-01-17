@@ -18,13 +18,7 @@ def send_bulk_emails(mail, file,template_html):
             data = pd.read_csv(file)
         else:
             return {"message": "Unsupported file format. Please upload .csv or .xlsx files"}, 400
-
-
-        body = None
-        recipients=[]
-        sub = None
-
-
+        
         required_columns = {'email_id', 'subject'}
         if not required_columns.issubset(data.columns):
             return jsonify({"error": f"CSV must contain the following columns: {required_columns}"}), 400
@@ -43,13 +37,9 @@ def send_bulk_emails(mail, file,template_html):
                 recipients=[row['email_id']],
                 sender=os.getenv('MAIL_SENDER')
             )
+            print(msg)
             msg.html = updated_template
             mail.send(msg)
-            recipients.append(row['email_id'])
-            if sub is None:
-                    sub = row['subject']
-            if body is None:
-                body = updated_template
 
         return jsonify({"message": "Emails sent successfully!"}), 200
 

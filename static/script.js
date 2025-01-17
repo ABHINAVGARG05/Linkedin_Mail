@@ -34,9 +34,6 @@ uploadForm.addEventListener('submit', async (e) => {
         const token = localStorage.getItem('authToken');
         const response = await fetch('/upload', {
             method: 'POST',
-            headers: {
-                Authorization: `Bearer ${token}`
-            },
             body: formData
         });
 
