@@ -11,33 +11,6 @@ function showAlert(message, type = 'success') {
     alertBox.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
 }
 
-loginForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const userId = document.getElementById('userId').value;
-    const password = document.getElementById('password').value;
-
-    try {
-        const response = await fetch('/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username: userId, password })
-        });
-
-        const data = await response.json();
-        if (response.ok) {
-            localStorage.setItem('authToken', data.token);
-            showAlert('Login successful!', 'success');
-            loginDiv.style.display = 'none';
-            uploadDiv.style.display = 'block';
-        } else {
-            showAlert(data.error || 'Login failed', 'danger');
-        }
-    } catch (error) {
-        showAlert(`Error: ${error.message}`, 'danger');
-    }
-});
-
 uploadForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 

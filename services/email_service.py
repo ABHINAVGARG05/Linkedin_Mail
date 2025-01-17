@@ -2,14 +2,11 @@ from flask import Flask, request, render_template, redirect, url_for, jsonify
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from models.user import User
 from models.mail_data import EmailRecords
-from db.database import initialize_db, Config
 from flask_mail import Mail, Message
 import pandas as pd
 import os
 
 def send_bulk_emails(mail, file,template_html):
-    current_user = get_jwt_identity()
-
     if not file:
         return {"message": "No file provided"}, 400
 
@@ -53,25 +50,6 @@ def send_bulk_emails(mail, file,template_html):
                     sub = row['subject']
             if body is None:
                 body = updated_template
-
-        if recipients:
-            email_record = EmailRecords(
-                recipient=recipients,
-                subject=sub,
-                message=body,
-                sender=current_user["username"]
-            )
-            email_record.save()
-
-            
-            # email_record = EmailRecords(
-            #     recipient=row['email_id'],
-            #     subject=row['subject'],  
-            #     message=updated_template,
-            #     sender=current_user["username"]
-            # )
-            # print(email_record.to_json())
-            # email_record.save()
 
         return jsonify({"message": "Emails sent successfully!"}), 200
 

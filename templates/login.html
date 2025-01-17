@@ -10,76 +10,46 @@
     <div class="container mt-5">
         <h2 class="mb-4">Login and Upload CSV for Email Sending</h2>
 
-        <!-- Login Form -->
-        <div id="login-form">
-            <form id="loginForm">
-                <div class="mb-3">
-                    <label for="userId" class="form-label">User ID</label>
-                    <input 
-                        type="text" 
-                        id="userId" 
-                        class="form-control" 
-                        placeholder="Enter your User ID" 
-                        required>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        class="form-control" 
-                        placeholder="Enter your password" 
-                        required>
-                </div>
-                <button type="submit" class="btn btn-primary">Login</button>
-            </form>
-        </div>
-
-        <!-- File Upload Form -->
-        <div id="upload-form" style="display: none;">
+        <!-- Upload Form -->
+        <div id="upload-form">
             <form id="uploadForm" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="file" class="form-label">Upload CSV File</label>
                     <input 
                         type="file" 
                         id="file" 
-                        class="form-control"
-                        style="margin: 10px;"  
+                        class="form-control" 
                         accept=".csv, .xlsx" 
                         required>
-                    <label for="Email" class="Email-Id">Enter The Email Id</label>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Email" class="form-label">Enter Your Email ID</label>
                     <input 
                         type="text" 
                         id="Email" 
-                        class="Email-Id"
-                        style="margin: 10px;" 
+                        class="form-control" 
+                        placeholder="e.g., yourname@example.com" 
                         required>
-                    <label for="Password-Email" class="Password-Email">Enter Password</label>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Password-Email" class="form-label">Enter Email Password</label>
                     <input 
                         type="password" 
                         id="Password-Email" 
-                        class="Password-Email"
-                        style="margin: 10px;"   
+                        class="form-control" 
+                        placeholder="Your email password" 
                         required>
-                    <br>
-                    <label for="HTML" class="HTML">HTML Template</label>
+                </div>
+
+                <div class="mb-3">
+                    <label for="HTML" class="form-label">HTML Template</label>
                     <textarea 
                         id="HTML" 
-                        class="HTML" 
+                        class="form-control" 
                         placeholder="Enter your HTML template here"
-                        style="
-                        min-height: 100px; 
-                        width: 100%; 
-                        font-family: 'Courier New', Courier, monospace; 
-                        font-size: 14px; 
-                        line-height: 1.5; 
-                        padding: 10px; 
-                        border: 2px solid #ccc; 
-                        border-radius: 5px; 
-                        background-color: #f9f9f9; 
-                        color: #333; 
-                        margin-top:10px;
-                        resize: vertical;"  
+                        style="height: 100px; resize: vertical;"  
                         required></textarea>
                 </div>
 
